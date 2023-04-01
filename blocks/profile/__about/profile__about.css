@@ -1,0 +1,19 @@
+.profile__about {
+    grid-area: about;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0;
+    height: 14px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .profile__about {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}
