@@ -1,17 +1,23 @@
-.profile_first-line {
+.profile__first-line {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 336px;
+    column-gap: 18px;
+    max-width: 336px;
+    width: 100%;
     margin: 0;
+   
 }
 
 @media screen and (max-width:768px) { 
-    .profile_first-line {
+    .profile__first-line {
         justify-content: center;
         column-gap: 10px;
         align-items: baseline;
         max-width: 282px;
+        column-gap: 10px;
+        padding-left: 25px;
+        padding-top: 6px;
     }
 }

@@ -21,6 +21,10 @@ function handleFormSubmit(evt) {
     evt.preventDefault();
     Name.textContent = nameInput.value;
     job.textContent = jobInput.value;
+    togglePopUp();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+const saveinfo = document.querySelector('.popup__save-bttn');
+saveinfo.addEventListener('click',handleFormSubmit);

@@ -1,7 +1,6 @@
 .profile__info {
     grid-area: info;
     max-width: 336px;
-    height: 73px;
     display: flex;
     flex-direction: column;
     text-align: left;
