@@ -15,7 +15,7 @@
 }
 
 .element__like:active {
-    background-image: url(../../../../images/like-black.png);
+    background-image: url(../../../images/like-black.png);
     opacity: 1;
     transition: opacity 0.1s linear;
 }
