@@ -4,7 +4,7 @@
     max-width: 880px;
     height: 74px;
     margin: 0;
-    padding-top: 45px;    
+    padding-top: 45px;
     border-bottom: 1px solid #545454;
 }
 
@@ -12,5 +12,5 @@
     .header {
         padding-top: 28px;
         height: 56px;
-    }    
+    }
 }

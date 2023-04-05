@@ -3,18 +3,24 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    top: 155px;
-    right: 385px;
+    top: -40px;
+    right: -40px;
     background-image: url(../../../images/Close\ Icon.svg);
     background-size: cover;
     z-index: 2;
+    cursor: pointer;
 }
 
 @media screen  and (max-width:768px){
     .popup__close-bttn {
     width: 20px;
     height: 20px;
-    top: 86px;
-    right: 19px;
+    top:-34px;
+    right: 0px;
 }
+}
+
+.popup__close-bttn:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear;
 }

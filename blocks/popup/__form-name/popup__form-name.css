@@ -4,11 +4,13 @@
     line-height: 29px;
     margin: 0;
     align-self: flex-start;
+    padding: 34px 36px 54px;
 }
 
 @media screen and (max-width: 768px) {
     .popup__form-name {
         font-size: 18px;
         line-height: 22px;
+        padding: 25px 22px 80px;
     }
 }

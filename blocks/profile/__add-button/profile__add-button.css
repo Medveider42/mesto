@@ -10,6 +10,7 @@
     background-size: 22px;
     background-position: center;
     background-color: #000;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -17,6 +18,7 @@
         width: 282px;
         box-sizing: border-box;
         background-size: 16px;
+        align-self: center;
     }
 }
 

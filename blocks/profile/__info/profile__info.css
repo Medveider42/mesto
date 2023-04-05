@@ -1,7 +1,7 @@
 .profile__info {
     grid-area: info;
     max-width: 336px;
-    height: 73px;   
+    height: 73px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -10,11 +10,11 @@
 
 @media screen and (max-width: 768px) {
     .profile__info {
-        min-width: 282px;
+        width: 282px;
         column-gap: 14px;
         row-gap: 8px;
-        padding-top: 25px;        
+        padding-top: 20px;
         padding-bottom: 18px;
-        padding-left: 30px;
+        align-items: center;
         }
 }
