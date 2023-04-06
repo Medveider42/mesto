@@ -1,6 +1,6 @@
 .popup__save-bttn {
     width: 100%;
-    padding:0;
+    padding: 0;
     height: 50px;
     background: #000;
     border: 0;
@@ -17,12 +17,12 @@
 }
 
 @media screen and (max-width: 768px) {
-    .popup__save-bttn {    
-    height: 46px;
-    font-size: 14px;
-    line-height: 17px;
-    margin-top: 0;
-}
+    .popup__save-bttn {
+      height: 46px;
+      font-size: 14px;
+      line-height: 17px;
+      margin-top: 0;
+    }
 }
 
 .popup__save-bttn:hover {
