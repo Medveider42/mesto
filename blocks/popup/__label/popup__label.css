@@ -5,10 +5,3 @@
     align-items: center;
     border: none;
 }
-
-@media screen and (max-width: 768px) {
-    .popup__label {
-        height: 27px;
-        margin-bottom: 35px;
-    }
-}
