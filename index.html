@@ -47,19 +47,17 @@
         </div>
     </div>
     <div class="popup popup_add">
-        <div class="popup__container">
+        <form class="popup__container" name="card-info">
             <button class="popup__close-bttn" type="button" id="AddCardCloseBtn"></button>
             <h3 class="popup__form-name">Новое место</h3>
-            <form name="profile-info">
                 <label class="popup__label" for="CardName">                
                     <input type="text" id="PlacedName" placeholder="Название" class="popup__input popup__field-name"
-                        name="PlaceName"></label>
+                        name="PlaceName" required></label>
                 <label class="popup__label" for="PhotoLink" id="URL">
-                    <input type="text" id="PhotoLink" placeholder="Ссылка на картинку" class="popup__input popup__field-about"
-                        name="PhotoLink"></label>
+                    <input type="url" id="PhotoLink" placeholder="Ссылка на картинку" class="popup__input popup__field-about"
+                        name="PhotoLink" required></label>
                 <button class="popup__save-bttn" type="button">Создать</button>
-            </form>
-        </div>
+        </form>
     </div>
     <div class="popup popup_big-image">
         <div class="popup__image-container">
