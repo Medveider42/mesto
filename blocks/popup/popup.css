@@ -5,7 +5,6 @@
   align-content: flex-start;
   flex-wrap: wrap;
   position: fixed;
-  opacity: 1;
   z-index: 2;
   max-width: 880px;
   opacity: 0;
