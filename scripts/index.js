@@ -7,7 +7,7 @@ const photoPopupTitle = photoPopup.querySelector('.popup__figcaption');
 
 // открытие- закрытие попапов
 const profileEditPopupBtn = document.querySelector('.profile__edit-button');
-const closeEditPopup = profileEditPopup.querySelector('.popup__close-bttn');
+const popupEditClose = profileEditPopup.querySelector('.popup__close-bttn');
 const cardAddCloseBtn = cardAddPopup.querySelector('.popup__close-bttn');
 const photoPopupCloseBtn = photoPopup.querySelector('.popup__close-bttn');
 const cardAddPopupBtn = document.querySelector('.profile__add-button');
@@ -25,14 +25,14 @@ const cardNameInput = cardAddPopup.querySelector('.popup__field-name');
 const photoLinkInput = cardAddPopup.querySelector('.popup__field-about');
 
 //значения профайла
-const Name = document.querySelector('.profile__name');
+const profileName = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__about');
 
 // шаблон карточек
 import {initialCards} from "./cards.js";
 
-const CardTemplate = document.getElementById('cardTemplate').content;
-const CardsContainer = document.querySelector('.elements');
+const cardTemplate = document.getElementById('cardTemplate').content;
+const cardsContainer = document.querySelector('.elements');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -42,19 +42,19 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
 
-closeEditPopup.addEventListener('click', function () {
+popupEditClose.addEventListener('click', function () {
     closePopup(profileEditPopup);
 });
 
 profileEditPopupBtn.addEventListener('click', function () {
-    nameInput.value = Name.textContent;
+    nameInput.value = profileName.textContent;
     jobInput.value = job.textContent;
     openPopup(profileEditPopup);    
 });
 
-function editProfileHandleFormSubmit(evt) {
+function handleEditProfileFormSubmit(evt) {
     evt.preventDefault();
-    Name.textContent = nameInput.value;
+    profileName.textContent = nameInput.value;
     job.textContent = jobInput.value;
     closePopup(profileEditPopup);
 }
@@ -74,13 +74,11 @@ cardAddCloseBtn.addEventListener('click', function () {
      closePopup(cardAddPopup);
 });
 
-function addEventOpenPhotoPopup(item, name, link) {
-    item.addEventListener('click', function () {
-        photoPopupImage.src = link;
-        photoPopupImage.alt = name;
-        photoPopupTitle.textContent = name;
-        closePopup(photoPopup);
-    });
+function handleOpenPhotoPopup(name, link) {
+    photoPopupImage.src = link;
+    photoPopupImage.alt = name;
+    photoPopupTitle.textContent = name;
+    openPopup(photoPopup);
 };
 
 photoPopupCloseBtn.addEventListener('click', function () {
@@ -88,7 +86,7 @@ photoPopupCloseBtn.addEventListener('click', function () {
 });
 
 function createCard(name, link) {
-    const cardElement = CardTemplate.querySelector('.element').cloneNode(true);
+    const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 
     const cardPhoto = cardElement.querySelector('.element__photo');
     const cardTitle = cardElement.querySelector('.element__title');
@@ -99,23 +97,25 @@ function createCard(name, link) {
     cardTitle.textContent = name;
     cardPhoto.src = link;
     cardPhoto.alt = name;
-    addEventOpenPhotoPopup(cardPhoto, name, link);
+
+    cardPhoto.addEventListener('click', () => handleOpenPhotoPopup(name, link));
+
     return cardElement;
 };
 
 function renderCard(name, link) {
     const card = createCard(name, link);
-    CardsContainer.prepend(card);
+    cardsContainer.prepend(card);
 };
 
 initialCards.forEach(function (item) {
     renderCard(item.name, item.link)
 });
 
-profileFormElement.addEventListener('submit', editProfileHandleFormSubmit);
+profileFormElement.addEventListener('submit', handleEditProfileFormSubmit);
 cardFormElement.addEventListener('submit', addCardFormSubmitHandler);
 
-profileInfoSave.addEventListener('click', editProfileHandleFormSubmit);
+profileInfoSave.addEventListener('click', handleEditProfileFormSubmit);
 cardAddSaveBtn.addEventListener('click', addCardFormSubmitHandler);
 
 // удаление карточки
