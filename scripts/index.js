@@ -1,4 +1,3 @@
-//попап
 const profileEditPopup = document.querySelector('.popup_edit');
 const cardAddPopup = document.querySelector('.popup_add');
 const photoPopup = document.querySelector('.popup_big-image');
@@ -29,7 +28,7 @@ const profileName = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__about');
 
 // шаблон карточек
-import {initialCards} from "./cards.js";
+import { initialCards } from "./cards.js";
 
 const cardTemplate = document.getElementById('cardTemplate').content;
 const cardsContainer = document.querySelector('.elements');
@@ -49,7 +48,7 @@ popupEditClose.addEventListener('click', function () {
 profileEditPopupBtn.addEventListener('click', function () {
     nameInput.value = profileName.textContent;
     jobInput.value = job.textContent;
-    openPopup(profileEditPopup);    
+    openPopup(profileEditPopup);
 });
 
 function handleEditProfileFormSubmit(evt) {
@@ -67,11 +66,11 @@ function addCardFormSubmitHandler(evt) {
 }
 
 cardAddPopupBtn.addEventListener('click', function () {
-    openPopup(cardAddPopup);    
+    openPopup(cardAddPopup);
 });
 
 cardAddCloseBtn.addEventListener('click', function () {
-     closePopup(cardAddPopup);
+    closePopup(cardAddPopup);
 });
 
 function handleOpenPhotoPopup(name, link) {
@@ -129,3 +128,24 @@ function handleLike(evt) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle('element__like_active');
 };
+
+//закрытие esc
+function closePopupByEsc(evt) {
+    if (evt.key === 'Escape') {
+        const popupActive = document.querySelector('.popup_opened');
+        closePopup(popupActive);
+        evt.preventDefault();
+    }
+};
+
+document.addEventListener('keydown', closePopupByEsc);
+
+//закрытие оверлей
+function closePopupByOverlay(evt) {
+    if (evt.target.classList.contains('popup')) {
+        const popupActive = document.querySelector('.popup_opened');
+        closePopup(popupActive);
+    }
+}
+
+document.addEventListener('click', closePopupByOverlay);

@@ -7,7 +7,7 @@
     right: -40px;
     background-image: url(../../../images/close-icon.svg);
     background-size: cover;
-    z-index: 2;
+    z-index: 1;
     cursor: pointer;
 }
 
@@ -17,8 +17,7 @@
     height: 20px;
     top:-34px;
     right: 0px;
-}
-}
+}}
 
 .popup__close-bttn:hover {
     opacity: 0.6;

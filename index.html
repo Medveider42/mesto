@@ -32,42 +32,48 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
     <div class="popup popup_edit">
-        <div class="popup__container">
+        <form class="popup__container form" name="profile-info" novalidate>
             <button class="popup__close-bttn" type="button"></button>
             <h3 class="popup__form-name">Редактировать профиль</h3>
-            <form name="profile-info">
-                <label class="popup__label" for="Name">
-                    <input type="text" id="Name" placeholder="Имя" class="popup__input popup__field-name"
-                        name="name"></label>
-                <label class="popup__label" for="Info">
-                    <input type="text" id="Info" placeholder="О себе" class="popup__input popup__field-about"
-                        name="about"></label>
-                <button class="popup__save-bttn" type="button">Сохранить</button>
-            </form>
-        </div>
+            <label class="popup__label" for="Name">
+                <input type="text" minlength="2" maxlength="40" placeholder="Имя" class="popup__input popup__field-name"
+                    name="name" required>
+                <span id='name-error' class="error"></span>
+            </label>
+            <label class="popup__label" for="Info">
+                <input type="text" minlength="2" maxlength="200" placeholder="О себе"
+                    class="popup__input popup__field-about" name="about" required>
+                <span id='about-error' class="error"></span>
+            </label>
+            <button class="popup__save-bttn" type="button">Сохранить</button>
+        </form>
     </div>
     <div class="popup popup_add">
-        <form class="popup__container" name="card-info">
+        <form class="popup__container form" name="card-info" novalidate>
             <button class="popup__close-bttn" type="button" id="AddCardCloseBtn"></button>
             <h3 class="popup__form-name">Новое место</h3>
-                <label class="popup__label" for="CardName">                
-                    <input type="text" id="PlacedName" placeholder="Название" class="popup__input popup__field-name"
-                        name="PlaceName" required></label>
-                <label class="popup__label" for="PhotoLink" id="URL">
-                    <input type="url" id="PhotoLink" placeholder="Ссылка на картинку" class="popup__input popup__field-about"
-                        name="PhotoLink" required></label>
-                <button class="popup__save-bttn" type="button">Создать</button>
+            <label class="popup__label" for="CardName">
+                <input type="text" minlength="2" maxlength="30" placeholder="Название"
+                    class="popup__input popup__field-name" name="placeName" required>
+                <span id='placeName-error' class="error"></span>
+            </label>
+            <label class="popup__label" for="PhotoLink" id="URL">
+                <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__field-about"
+                    name="photoLink" required>
+                <span id='photoLink-error' class="error"></span>
+            </label>
+            <button class="popup__save-bttn" type="button">Создать</button>
         </form>
     </div>
     <div class="popup popup_big-image">
         <div class="popup__image-container">
-          <button type="button" class="popup__close-bttn"></button>
-          <figure class="popup__figure">
-            <img class="popup__image">
-            <figcaption class="popup__figcaption"></figcaption>
-          </figure>
+            <button type="button" class="popup__close-bttn"></button>
+            <figure class="popup__figure">
+                <img class="popup__image">
+                <figcaption class="popup__figcaption"></figcaption>
+            </figure>
         </div>
-    </div>      
+    </div>
     <template id="cardTemplate">
         <div class="element">
             <button class="element__delete" type="button" aria-label="удалить"></button>
@@ -78,6 +84,7 @@
             </div>
         </div>
     </template>
+    <script src="/scripts/validation.js" type="module"></script>
     <script src="/scripts/index.js" type="module"></script>
 </body>
 
