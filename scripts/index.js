@@ -1,17 +1,13 @@
+const popupElement = document.querySelectorAll('.popup_opened');
 const profileEditPopup = document.querySelector('.popup_edit');
 const cardAddPopup = document.querySelector('.popup_add');
 const photoPopup = document.querySelector('.popup_big-image');
 const photoPopupImage = document.querySelector('.popup__image');
 const photoPopupTitle = photoPopup.querySelector('.popup__figcaption');
 
-// открытие- закрытие попапов
+// открытие попапов
 const profileEditPopupBtn = document.querySelector('.profile__edit-button');
-const popupEditClose = profileEditPopup.querySelector('.popup__close-bttn');
-const cardAddCloseBtn = cardAddPopup.querySelector('.popup__close-bttn');
-const photoPopupCloseBtn = photoPopup.querySelector('.popup__close-bttn');
 const cardAddPopupBtn = document.querySelector('.profile__add-button');
-const cardAddSaveBtn = cardAddPopup.querySelector('.popup__save-bttn');
-const profileInfoSave = profileEditPopup.querySelector('.popup__save-bttn');
 
 //формы
 const profileFormElement = profileEditPopup.querySelector('.popup__container');
@@ -28,22 +24,25 @@ const profileName = document.querySelector('.profile__name');
 const job = document.querySelector('.profile__about');
 
 // шаблон карточек
-import { initialCards } from "./cards.js";
-
 const cardTemplate = document.getElementById('cardTemplate').content;
 const cardsContainer = document.querySelector('.elements');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEsc);
 };
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupByEsc);    
 };
 
-popupEditClose.addEventListener('click', function () {
-    closePopup(profileEditPopup);
-});
+//закрытие всех крестиков
+const crossBttn = document.querySelectorAll('.popup__close-bttn');
+crossBttn.forEach(escButton => {
+    const buttonPopup = escButton.closest('.popup');
+    escButton.addEventListener('click', () => closePopup(buttonPopup));
+    });
 
 profileEditPopupBtn.addEventListener('click', function () {
     nameInput.value = profileName.textContent;
@@ -60,17 +59,14 @@ function handleEditProfileFormSubmit(evt) {
 
 function addCardFormSubmitHandler(evt) {
     evt.preventDefault();
-    renderCard(cardNameInput.value, photoLinkInput.value);
-    closePopup(cardAddPopup);
+    renderCard(cardNameInput.value, photoLinkInput.value);    
     cardFormElement.reset();
+    enableValidation(configFormSelector);
+    closePopup(cardAddPopup);    
 }
 
 cardAddPopupBtn.addEventListener('click', function () {
     openPopup(cardAddPopup);
-});
-
-cardAddCloseBtn.addEventListener('click', function () {
-    closePopup(cardAddPopup);
 });
 
 function handleOpenPhotoPopup(name, link) {
@@ -79,10 +75,6 @@ function handleOpenPhotoPopup(name, link) {
     photoPopupTitle.textContent = name;
     openPopup(photoPopup);
 };
-
-photoPopupCloseBtn.addEventListener('click', function () {
-    closePopup(photoPopup);
-});
 
 function createCard(name, link) {
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -114,9 +106,6 @@ initialCards.forEach(function (item) {
 profileFormElement.addEventListener('submit', handleEditProfileFormSubmit);
 cardFormElement.addEventListener('submit', addCardFormSubmitHandler);
 
-profileInfoSave.addEventListener('click', handleEditProfileFormSubmit);
-cardAddSaveBtn.addEventListener('click', addCardFormSubmitHandler);
-
 // удаление карточки
 function handleDelete(evt) {
     const eventTarget = evt.target;
@@ -138,14 +127,12 @@ function closePopupByEsc(evt) {
     }
 };
 
-document.addEventListener('keydown', closePopupByEsc);
-
 //закрытие оверлей
-function closePopupByOverlay(evt) {
-    if (evt.target.classList.contains('popup')) {
-        const popupActive = document.querySelector('.popup_opened');
-        closePopup(popupActive);
-    }
-}
-
-document.addEventListener('click', closePopupByOverlay);
+const popups  = document.querySelectorAll('.popup');
+[...popups].forEach((popupElement) => {
+    popupElement.addEventListener('click', function (evt) {
+      if (evt.target.classList.contains('popup_opened')) {
+        closePopup(popupElement);
+      }
+    })
+});

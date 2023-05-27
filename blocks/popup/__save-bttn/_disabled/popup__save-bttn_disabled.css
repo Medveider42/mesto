@@ -3,4 +3,10 @@
     border: 1px solid #000;
     color: #000;
     opacity: 0.2;
+    cursor: default;
+}
+
+.popup__save-bttn_disabled:hover {
+    opacity: 0.2;
+    transition: opacity;
 }

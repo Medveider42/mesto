@@ -9,7 +9,6 @@ function hideError(inputElement, errorElement, config) {
 }
 
 function checkInputValidity(inputElement, formElement, config) {
-    console.log(inputElement.validationMessage);
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
     if (!errorElement) return;
@@ -44,23 +43,17 @@ function setEventListener(formElement, config) {
     const submitBttnElement = formElement.querySelector(config.submitButtonSelector);
 
     toggleBttnState(submitBttnElement, formElement.checkValidity(), config);
-
-    formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-    });
-
+    
     [...inputLists].forEach((inputItem) => {
         inputItem.addEventListener('input', () => {
-            toggleBttnState(submitBttnElement, formElement.checkValidity(), config);
             checkInputValidity(inputItem, formElement, config);
-
+            toggleBttnState(submitBttnElement, formElement.checkValidity(), config);
         })
     })
 }
 
 function enableValidation(config) {
     const forms = document.querySelectorAll(config.formSelector);
-    console.log(forms);
     [...forms].forEach((formItem) => {
         setEventListener(formItem, config);
     })
