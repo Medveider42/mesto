@@ -61,7 +61,7 @@ function addCardFormSubmitHandler(evt) {
     evt.preventDefault();
     renderCard(cardNameInput.value, photoLinkInput.value);    
     cardFormElement.reset();
-    enableValidation(configFormSelector);
+    disabledBttn(evt.submitter, configFormSelector);    
     closePopup(cardAddPopup);    
 }
 
