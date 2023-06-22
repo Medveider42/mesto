@@ -50,7 +50,7 @@ _handlePhotoPopupClick() {
 _setEventListeners() {
     this._cardLikeBtn.addEventListener('click', this._handleLike);
     this._cardDeleteBtn.addEventListener('click', this._handleDelete);
-    this._cardPhoto.addEventListener('click', () => handleOpenPhotoPopup(this._cardPhoto.src, this._cardPhoto.alt));
+    this._cardPhoto.addEventListener('click', () => handleOpenPhotoPopup(this._link, this._name));
 }
 
 }
