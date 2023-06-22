@@ -43,15 +43,14 @@ _handleLike(evt) {
     eventTarget.classList.toggle('element__like_active');
 };
 
-_handlePhotoPopupClick() {
+/*_handlePhotoPopupClick() {
     handleOpenPhotoPopup(this._cardTitle, this._cardPhoto);
-}
+}*/
 
 _setEventListeners() {
     this._cardLikeBtn.addEventListener('click', this._handleLike);
     this._cardDeleteBtn.addEventListener('click', this._handleDelete);
-    this._cardPhoto.addEventListener('click', () => handleOpenPhotoPopup(this._link, this._name));
+    this._cardPhoto.addEventListener('click', () => handleOpenPhotoPopup(this._name, this._link));
 }
-
 }
 
